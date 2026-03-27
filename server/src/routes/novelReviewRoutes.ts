@@ -36,7 +36,7 @@ export function registerNovelReviewRoutes(input: RegisterNovelReviewRoutesInput)
         res.status(200).json({
           success: true,
           data,
-          message: "Chapter review completed.",
+          message: "章节审阅完成。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);
@@ -54,7 +54,7 @@ export function registerNovelReviewRoutes(input: RegisterNovelReviewRoutesInput)
         res.status(200).json({
           success: true,
           data,
-          message: "Continuity audit completed.",
+          message: "连续性审计完成。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);
@@ -72,7 +72,7 @@ export function registerNovelReviewRoutes(input: RegisterNovelReviewRoutesInput)
         res.status(200).json({
           success: true,
           data,
-          message: "Character audit completed.",
+          message: "角色审计完成。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);
@@ -90,7 +90,7 @@ export function registerNovelReviewRoutes(input: RegisterNovelReviewRoutesInput)
         res.status(200).json({
           success: true,
           data,
-          message: "Plot audit completed.",
+          message: "情节审计完成。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);
@@ -108,7 +108,7 @@ export function registerNovelReviewRoutes(input: RegisterNovelReviewRoutesInput)
         res.status(200).json({
           success: true,
           data,
-          message: "Full audit completed.",
+          message: "全面审计完成。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);
@@ -126,7 +126,7 @@ export function registerNovelReviewRoutes(input: RegisterNovelReviewRoutesInput)
         res.status(200).json({
           success: true,
           data,
-          message: "Audit reports loaded.",
+          message: "审计报告已加载。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);
@@ -144,7 +144,7 @@ export function registerNovelReviewRoutes(input: RegisterNovelReviewRoutesInput)
         res.status(200).json({
           success: true,
           data,
-          message: "Audit issue resolved.",
+          message: "审计问题已解决。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);
@@ -177,7 +177,7 @@ export function registerNovelReviewRoutes(input: RegisterNovelReviewRoutesInput)
       res.status(200).json({
         success: true,
         data,
-        message: "Quality report loaded.",
+        message: "质量报告已加载。",
       } satisfies ApiResponse<typeof data>);
     } catch (error) {
       next(error);

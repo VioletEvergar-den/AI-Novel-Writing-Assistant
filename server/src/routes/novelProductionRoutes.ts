@@ -69,7 +69,7 @@ export function registerNovelProductionRoutes(input: RegisterNovelProductionRout
         res.status(202).json({
           success: true,
           data,
-          message: "Pipeline job created.",
+          message: "流水线任务已创建。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         if (forwardBusinessError(error, next)) {
@@ -90,14 +90,14 @@ export function registerNovelProductionRoutes(input: RegisterNovelProductionRout
         if (!data) {
           res.status(404).json({
             success: false,
-            error: "Pipeline job not found.",
+            error: "流水线任务不存在。",
           } satisfies ApiResponse<null>);
           return;
         }
         res.status(200).json({
           success: true,
           data,
-          message: "Pipeline job loaded.",
+          message: "流水线任务已加载。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);
@@ -115,7 +115,7 @@ export function registerNovelProductionRoutes(input: RegisterNovelProductionRout
         res.status(200).json({
           success: true,
           data,
-          message: "Chapter hook generated.",
+          message: "章节钩子已生成。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);
@@ -153,7 +153,7 @@ export function registerNovelProductionRoutes(input: RegisterNovelProductionRout
         res.status(200).json({
           success: true,
           data,
-          message: "Outline optimization preview generated.",
+          message: "大纲优化预览已生成。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);
@@ -194,7 +194,7 @@ export function registerNovelProductionRoutes(input: RegisterNovelProductionRout
         res.status(200).json({
           success: true,
           data,
-          message: "Structured outline optimization preview generated.",
+          message: "结构化大纲优化预览已生成。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);
@@ -212,7 +212,7 @@ export function registerNovelProductionRoutes(input: RegisterNovelProductionRout
         res.status(200).json({
           success: true,
           data,
-          message: "Titles generated.",
+          message: "标题已生成。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);

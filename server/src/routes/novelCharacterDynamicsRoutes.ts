@@ -51,7 +51,7 @@ export function registerNovelCharacterDynamicsRoutes(
         res.status(200).json({
           success: true,
           data,
-          message: "Character dynamics overview loaded.",
+          message: "角色动态概览已加载。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);
@@ -69,7 +69,7 @@ export function registerNovelCharacterDynamicsRoutes(
         res.status(200).json({
           success: true,
           data,
-          message: "Character candidates loaded.",
+          message: "角色候选列表已加载。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);
@@ -87,7 +87,7 @@ export function registerNovelCharacterDynamicsRoutes(
         res.status(200).json({
           success: true,
           data,
-          message: "Character candidate confirmed.",
+          message: "角色候选已确认。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);
@@ -105,7 +105,7 @@ export function registerNovelCharacterDynamicsRoutes(
         res.status(200).json({
           success: true,
           data,
-          message: "Character candidate merged.",
+          message: "角色候选已合并。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);
@@ -141,7 +141,7 @@ export function registerNovelCharacterDynamicsRoutes(
         res.status(200).json({
           success: true,
           data,
-          message: "Character relation stage updated.",
+          message: "角色关系阶段已更新。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);
@@ -159,7 +159,7 @@ export function registerNovelCharacterDynamicsRoutes(
         res.status(200).json({
           success: true,
           data,
-          message: "Character dynamics rebuilt.",
+          message: "角色动态已重建。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);

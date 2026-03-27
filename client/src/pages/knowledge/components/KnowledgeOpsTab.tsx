@@ -120,7 +120,7 @@ export default function KnowledgeOpsTab({
                 <div className="font-medium">
                   {job.ownerType}:{job.ownerId}
                 </div>
-                <div className="text-xs text-destructive">{job.lastError ?? "Unknown error"}</div>
+                <div className="text-xs text-destructive">{job.lastError ?? "未知错误"}</div>
               </div>
             ))}
           </CardContent>

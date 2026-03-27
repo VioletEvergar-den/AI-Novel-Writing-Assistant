@@ -35,7 +35,7 @@ export function registerNovelWorldSliceRoutes(input: RegisterNovelWorldSliceRout
       res.status(200).json({
         success: true,
         data,
-        message: "Novel world slice loaded.",
+        message: "小说世界切片已加载。",
       } satisfies ApiResponse<typeof data>);
     } catch (error) {
       next(error);
@@ -53,7 +53,7 @@ export function registerNovelWorldSliceRoutes(input: RegisterNovelWorldSliceRout
         res.status(200).json({
           success: true,
           data,
-          message: "Novel world slice refreshed.",
+          message: "小说世界切片已刷新。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);
@@ -74,7 +74,7 @@ export function registerNovelWorldSliceRoutes(input: RegisterNovelWorldSliceRout
         res.status(200).json({
           success: true,
           data,
-          message: "Novel world slice preferences updated.",
+          message: "小说世界切片偏好已更新。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);

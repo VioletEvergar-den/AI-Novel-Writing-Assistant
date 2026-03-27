@@ -56,7 +56,7 @@ router.post("/generate", validate({ body: generateSchema }), async (req, res, ne
     res.status(202).json({
       success: true,
       data: task,
-      message: "Image generation task queued.",
+      message: "图片生成任务已排队。",
     } satisfies ApiResponse<typeof task>);
   } catch (error) {
     next(error);
@@ -70,7 +70,7 @@ router.get("/tasks/:taskId", validate({ params: taskParamsSchema }), async (req,
     res.status(200).json({
       success: true,
       data,
-      message: "Task fetched.",
+      message: "任务已获取。",
     } satisfies ApiResponse<typeof data>);
   } catch (error) {
     next(error);
@@ -84,7 +84,7 @@ router.get("/assets", validate({ query: assetQuerySchema }), async (req, res, ne
     res.status(200).json({
       success: true,
       data,
-      message: "Assets fetched.",
+      message: "素材已获取。",
     } satisfies ApiResponse<typeof data>);
   } catch (error) {
     next(error);
@@ -112,7 +112,7 @@ router.post("/assets/:assetId/set-primary", validate({ params: assetParamsSchema
     res.status(200).json({
       success: true,
       data,
-      message: "Primary image updated.",
+      message: "主图已更新。",
     } satisfies ApiResponse<typeof data>);
   } catch (error) {
     next(error);

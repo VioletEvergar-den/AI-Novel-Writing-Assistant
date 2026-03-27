@@ -41,7 +41,7 @@ export function registerNovelVolumeRoutes(input: RegisterNovelVolumeRoutesInput)
         res.status(200).json({
           success: true,
           data,
-          message: "Volume workspace loaded.",
+          message: "卷册工作区已加载。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);
@@ -59,7 +59,7 @@ export function registerNovelVolumeRoutes(input: RegisterNovelVolumeRoutesInput)
         res.status(200).json({
           success: true,
           data,
-          message: "Volume workspace updated.",
+          message: "卷册工作区已更新。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);
@@ -77,7 +77,7 @@ export function registerNovelVolumeRoutes(input: RegisterNovelVolumeRoutesInput)
         res.status(200).json({
           success: true,
           data,
-          message: "Volume workspace generated.",
+          message: "卷册工作区已生成。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);
@@ -95,7 +95,7 @@ export function registerNovelVolumeRoutes(input: RegisterNovelVolumeRoutesInput)
         res.status(201).json({
           success: true,
           data,
-          message: "Volume draft version created.",
+          message: "卷册草稿版本已创建。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);
@@ -113,7 +113,7 @@ export function registerNovelVolumeRoutes(input: RegisterNovelVolumeRoutesInput)
         res.status(200).json({
           success: true,
           data,
-          message: "Volume version activated.",
+          message: "卷册版本已激活。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);
@@ -149,7 +149,7 @@ export function registerNovelVolumeRoutes(input: RegisterNovelVolumeRoutesInput)
         res.status(200).json({
           success: true,
           data,
-          message: "Volume versions loaded.",
+          message: "卷册版本列表已加载。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);
@@ -168,7 +168,7 @@ export function registerNovelVolumeRoutes(input: RegisterNovelVolumeRoutesInput)
         res.status(200).json({
           success: true,
           data,
-          message: "Volume diff loaded.",
+          message: "卷册差异已加载。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);
@@ -204,7 +204,7 @@ export function registerNovelVolumeRoutes(input: RegisterNovelVolumeRoutesInput)
         res.status(200).json({
           success: true,
           data,
-          message: "Volume chapters synchronized.",
+          message: "卷册章节已同步。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);
@@ -222,7 +222,7 @@ export function registerNovelVolumeRoutes(input: RegisterNovelVolumeRoutesInput)
         res.status(200).json({
           success: true,
           data,
-          message: "Legacy outline migrated to volume workspace.",
+          message: "旧版大纲已迁移到卷册工作区。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);

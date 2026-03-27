@@ -32,7 +32,7 @@ export function registerNovelPlanningRoutes(input: RegisterNovelPlanningRoutesIn
       res.status(200).json({
         success: true,
         data,
-        message: "Story state loaded.",
+        message: "故事状态已加载。",
       } satisfies ApiResponse<typeof data>);
     } catch (error) {
       next(error);
@@ -46,7 +46,7 @@ export function registerNovelPlanningRoutes(input: RegisterNovelPlanningRoutesIn
       res.status(200).json({
         success: true,
         data,
-        message: "Latest state snapshot loaded.",
+        message: "最新状态快照已加载。",
       } satisfies ApiResponse<typeof data>);
     } catch (error) {
       next(error);
@@ -63,7 +63,7 @@ export function registerNovelPlanningRoutes(input: RegisterNovelPlanningRoutesIn
         res.status(200).json({
           success: true,
           data,
-          message: "Chapter state snapshot loaded.",
+          message: "章节状态快照已加载。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);
@@ -81,7 +81,7 @@ export function registerNovelPlanningRoutes(input: RegisterNovelPlanningRoutesIn
         res.status(200).json({
           success: true,
           data,
-          message: "Story state rebuild completed.",
+          message: "故事状态重建完成。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);
@@ -99,7 +99,7 @@ export function registerNovelPlanningRoutes(input: RegisterNovelPlanningRoutesIn
         res.status(200).json({
           success: true,
           data,
-          message: "Book plan generated.",
+          message: "全书规划已生成。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);
@@ -117,7 +117,7 @@ export function registerNovelPlanningRoutes(input: RegisterNovelPlanningRoutesIn
         res.status(200).json({
           success: true,
           data,
-          message: "Arc plan generated.",
+          message: "弧线规划已生成。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);
@@ -139,7 +139,7 @@ export function registerNovelPlanningRoutes(input: RegisterNovelPlanningRoutesIn
         res.status(200).json({
           success: true,
           data,
-          message: "Chapter plan generated.",
+          message: "章节规划已生成。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);
@@ -157,7 +157,7 @@ export function registerNovelPlanningRoutes(input: RegisterNovelPlanningRoutesIn
         res.status(200).json({
           success: true,
           data,
-          message: "Chapter plan loaded.",
+          message: "章节规划已加载。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);
@@ -175,7 +175,7 @@ export function registerNovelPlanningRoutes(input: RegisterNovelPlanningRoutesIn
         res.status(200).json({
           success: true,
           data,
-          message: "Replan completed.",
+          message: "重规划完成。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);

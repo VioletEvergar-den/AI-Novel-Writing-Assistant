@@ -35,7 +35,7 @@ export function registerNovelStorylineRoutes(input: RegisterNovelStorylineRoutes
         res.status(200).json({
           success: true,
           data,
-          message: "Storyline versions loaded.",
+          message: "故事线版本已加载。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);
@@ -53,7 +53,7 @@ export function registerNovelStorylineRoutes(input: RegisterNovelStorylineRoutes
         res.status(201).json({
           success: true,
           data,
-          message: "Storyline draft created.",
+          message: "故事线草稿已创建。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);
@@ -71,7 +71,7 @@ export function registerNovelStorylineRoutes(input: RegisterNovelStorylineRoutes
         res.status(200).json({
           success: true,
           data,
-          message: "Storyline version activated.",
+          message: "故事线版本已激活。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);
@@ -89,7 +89,7 @@ export function registerNovelStorylineRoutes(input: RegisterNovelStorylineRoutes
         res.status(200).json({
           success: true,
           data,
-          message: "Storyline version frozen.",
+          message: "故事线版本已冻结。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);
@@ -108,7 +108,7 @@ export function registerNovelStorylineRoutes(input: RegisterNovelStorylineRoutes
         res.status(200).json({
           success: true,
           data,
-          message: "Storyline diff loaded.",
+          message: "故事线差异已加载。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);
@@ -126,7 +126,7 @@ export function registerNovelStorylineRoutes(input: RegisterNovelStorylineRoutes
         res.status(200).json({
           success: true,
           data,
-          message: "Storyline impact analysis completed.",
+          message: "故事线影响分析完成。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);

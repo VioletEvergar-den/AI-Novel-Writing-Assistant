@@ -52,7 +52,7 @@ router.get("/documents", validate({ query: listDocumentsQuerySchema }), async (r
     res.status(200).json({
       success: true,
       data,
-      message: "Knowledge documents loaded.",
+      message: "知识文档列表已加载。",
     } satisfies ApiResponse<typeof data>);
   } catch (error) {
     next(error);
@@ -66,7 +66,7 @@ router.post("/documents", validate({ body: createDocumentSchema }), async (req, 
     res.status(201).json({
       success: true,
       data,
-      message: "Knowledge document created.",
+      message: "知识文档已创建。",
     } satisfies ApiResponse<typeof data>);
   } catch (error) {
     next(error);
@@ -80,14 +80,14 @@ router.get("/documents/:id", validate({ params: documentParamsSchema }), async (
     if (!data) {
       res.status(404).json({
         success: false,
-        error: "Knowledge document not found.",
+        error: "知识文档不存在。",
       } satisfies ApiResponse<null>);
       return;
     }
     res.status(200).json({
       success: true,
       data,
-      message: "Knowledge document loaded.",
+      message: "知识文档已加载。",
     } satisfies ApiResponse<typeof data>);
   } catch (error) {
     next(error);
@@ -104,7 +104,7 @@ router.post(
       res.status(201).json({
         success: true,
         data,
-        message: "Knowledge document version created.",
+        message: "知识文档版本已创建。",
       } satisfies ApiResponse<typeof data>);
     } catch (error) {
       next(error);
@@ -123,7 +123,7 @@ router.post(
       res.status(200).json({
         success: true,
         data,
-        message: "Knowledge document version activated.",
+        message: "知识文档版本已激活。",
       } satisfies ApiResponse<typeof data>);
     } catch (error) {
       next(error);
@@ -138,7 +138,7 @@ router.post("/documents/:id/reindex", validate({ params: documentParamsSchema })
     res.status(202).json({
       success: true,
       data,
-      message: "Knowledge document reindex queued.",
+      message: "知识文档重建索引已排队。",
     } satisfies ApiResponse<typeof data>);
   } catch (error) {
     next(error);
@@ -156,7 +156,7 @@ router.post(
       res.status(200).json({
         success: true,
         data,
-        message: "Knowledge document recall test completed.",
+        message: "知识文档召回测试已完成。",
       } satisfies ApiResponse<typeof data>);
     } catch (error) {
       next(error);
@@ -175,7 +175,7 @@ router.patch(
       res.status(200).json({
         success: true,
         data,
-        message: "Knowledge document updated.",
+        message: "知识文档已更新。",
       } satisfies ApiResponse<typeof data>);
     } catch (error) {
       next(error);

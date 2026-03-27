@@ -90,7 +90,7 @@ router.get("/", validate({ query: listQuerySchema }), async (req, res, next) => 
     res.status(200).json({
       success: true,
       data,
-      message: "Agent runs loaded.",
+      message: "Agent 运行列表已加载。",
     } satisfies ApiResponse<typeof data>);
   } catch (error) {
     next(error);
@@ -105,14 +105,14 @@ router.get("/:id", validate({ params: runIdParamsSchema }), async (req, res, nex
     if (!data) {
       res.status(404).json({
         success: false,
-        error: "Agent run not found.",
+        error: "Agent 运行不存在。",
       } satisfies ApiResponse<null>);
       return;
     }
     res.status(200).json({
       success: true,
       data,
-      message: "Agent run loaded.",
+      message: "Agent 运行已加载。",
     } satisfies ApiResponse<typeof data>);
   } catch (error) {
     next(error);
@@ -135,7 +135,7 @@ router.post(
       res.status(200).json({
         success: true,
         data,
-        message: body.action === "approve" ? "Approval accepted." : "Approval rejected.",
+        message: body.action === "approve" ? "审批已通过。" : "审批已拒绝。",
       } satisfies ApiResponse<typeof data>);
     } catch (error) {
       next(error);
@@ -154,7 +154,7 @@ router.post(
       res.status(200).json({
         success: true,
         data,
-        message: "Replay started.",
+        message: "回放已开始。",
       } satisfies ApiResponse<typeof data>);
     } catch (error) {
       next(error);

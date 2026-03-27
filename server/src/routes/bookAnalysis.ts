@@ -56,7 +56,7 @@ const sectionUpdateSchema = z.object({
 }).refine(
   (value) => value.editedContent !== undefined || value.notes !== undefined || value.frozen !== undefined,
   {
-    message: "At least one field must be provided.",
+    message: "至少需要提供一个字段。",
   },
 );
 
@@ -82,7 +82,7 @@ router.get("/", validate({ query: listQuerySchema }), async (req, res, next) => 
     res.status(200).json({
       success: true,
       data,
-      message: "Book analyses loaded.",
+      message: "书籍分析列表已加载。",
     } satisfies ApiResponse<typeof data>);
   } catch (error) {
     next(error);
@@ -96,7 +96,7 @@ router.post("/", validate({ body: createSchema }), async (req, res, next) => {
     res.status(201).json({
       success: true,
       data,
-      message: "Book analysis created.",
+      message: "书籍分析已创建。",
     } satisfies ApiResponse<typeof data>);
   } catch (error) {
     next(error);
@@ -110,14 +110,14 @@ router.get("/:id", validate({ params: analysisParamsSchema }), async (req, res, 
     if (!data) {
       res.status(404).json({
         success: false,
-        error: "Book analysis not found.",
+        error: "书籍分析不存在。",
       } satisfies ApiResponse<null>);
       return;
     }
     res.status(200).json({
       success: true,
       data,
-      message: "Book analysis loaded.",
+      message: "书籍分析已加载。",
     } satisfies ApiResponse<typeof data>);
   } catch (error) {
     next(error);
@@ -131,7 +131,7 @@ router.post("/:id/rebuild", validate({ params: analysisParamsSchema }), async (r
     res.status(202).json({
       success: true,
       data,
-      message: "Book analysis rebuild queued.",
+      message: "书籍分析重建已排队。",
     } satisfies ApiResponse<typeof data>);
   } catch (error) {
     next(error);
@@ -145,7 +145,7 @@ router.post("/:id/copy", validate({ params: analysisParamsSchema }), async (req,
     res.status(201).json({
       success: true,
       data,
-      message: "Book analysis copied.",
+      message: "书籍分析已复制。",
     } satisfies ApiResponse<typeof data>);
   } catch (error) {
     next(error);
@@ -163,7 +163,7 @@ router.post(
       res.status(200).json({
         success: true,
         data,
-        message: "Book analysis published to novel knowledge.",
+        message: "书籍分析已发布到小说知识库。",
       } satisfies ApiResponse<typeof data>);
     } catch (error) {
       next(error);
@@ -182,7 +182,7 @@ router.post(
       res.status(200).json({
         success: true,
         data,
-        message: "Book analysis section optimize preview generated.",
+        message: "书籍分析章节优化预览已生成。",
       } satisfies ApiResponse<typeof data>);
     } catch (error) {
       next(error);
@@ -200,7 +200,7 @@ router.post(
       res.status(202).json({
         success: true,
         data,
-        message: "Book analysis section regeneration queued.",
+        message: "书籍分析章节重新生成已排队。",
       } satisfies ApiResponse<typeof data>);
     } catch (error) {
       next(error);
@@ -219,7 +219,7 @@ router.patch(
       res.status(200).json({
         success: true,
         data,
-        message: "Book analysis section updated.",
+        message: "书籍分析章节已更新。",
       } satisfies ApiResponse<typeof data>);
     } catch (error) {
       next(error);
@@ -238,7 +238,7 @@ router.patch(
       res.status(200).json({
         success: true,
         data,
-        message: "Book analysis updated.",
+        message: "书籍分析已更新。",
       } satisfies ApiResponse<typeof data>);
     } catch (error) {
       next(error);

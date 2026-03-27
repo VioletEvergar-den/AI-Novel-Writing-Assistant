@@ -89,7 +89,7 @@ router.post("/candidates", validate({ body: candidatesSchema }), async (req, res
     res.status(200).json({
       success: true,
       data,
-      message: "Director candidates generated.",
+      message: "导演候选已生成。",
     } satisfies ApiResponse<typeof data>);
   } catch (error) {
     next(error);
@@ -102,7 +102,7 @@ router.post("/refine", validate({ body: refineSchema }), async (req, res, next) 
     res.status(200).json({
       success: true,
       data,
-      message: "Director candidates regenerated.",
+      message: "导演候选已重新生成。",
     } satisfies ApiResponse<typeof data>);
   } catch (error) {
     next(error);
@@ -115,7 +115,7 @@ router.post("/confirm", validate({ body: confirmSchema }), async (req, res, next
     res.status(200).json({
       success: true,
       data,
-      message: "Director candidate confirmed.",
+      message: "导演候选已确认。",
     } satisfies ApiResponse<typeof data>);
   } catch (error) {
     next(error);

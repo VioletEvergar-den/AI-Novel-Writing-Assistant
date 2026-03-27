@@ -48,7 +48,7 @@ export function registerNovelSnapshotCharacterRoutes(
       res.status(200).json({
         success: true,
         data,
-        message: "Snapshots loaded.",
+        message: "快照列表已加载。",
       } satisfies ApiResponse<typeof data>);
     } catch (error) {
       next(error);
@@ -66,7 +66,7 @@ export function registerNovelSnapshotCharacterRoutes(
         res.status(201).json({
           success: true,
           data,
-          message: "Snapshot created.",
+          message: "快照已创建。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);
@@ -85,7 +85,7 @@ export function registerNovelSnapshotCharacterRoutes(
         res.status(200).json({
           success: true,
           data,
-          message: "Snapshot restored.",
+          message: "快照已恢复。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);
@@ -100,7 +100,7 @@ export function registerNovelSnapshotCharacterRoutes(
       res.status(200).json({
         success: true,
         data,
-        message: "Characters loaded.",
+        message: "角色列表已加载。",
       } satisfies ApiResponse<typeof data>);
     } catch (error) {
       next(error);
@@ -117,7 +117,7 @@ export function registerNovelSnapshotCharacterRoutes(
         res.status(201).json({
           success: true,
           data,
-          message: "Character created.",
+          message: "角色已创建。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         if (forwardBusinessError(error, next)) {
@@ -156,7 +156,7 @@ export function registerNovelSnapshotCharacterRoutes(
       await novelService.deleteCharacter(id, charId);
       res.status(200).json({
         success: true,
-        message: "Character deleted.",
+        message: "角色已删除。",
       } satisfies ApiResponse<null>);
     } catch (error) {
       next(error);
@@ -173,7 +173,7 @@ export function registerNovelSnapshotCharacterRoutes(
         res.status(200).json({
           success: true,
           data,
-          message: "Character timeline loaded.",
+          message: "角色时间线已加载。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);
@@ -194,7 +194,7 @@ export function registerNovelSnapshotCharacterRoutes(
         res.status(200).json({
           success: true,
           data,
-          message: "Character timelines synced.",
+          message: "角色时间线已同步。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);
@@ -216,7 +216,7 @@ export function registerNovelSnapshotCharacterRoutes(
         res.status(200).json({
           success: true,
           data,
-          message: "Character timeline synced.",
+          message: "角色时间线已同步。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);
@@ -234,7 +234,7 @@ export function registerNovelSnapshotCharacterRoutes(
         res.status(200).json({
           success: true,
           data,
-          message: "Character evolved.",
+          message: "角色已演化。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);
@@ -256,7 +256,7 @@ export function registerNovelSnapshotCharacterRoutes(
         res.status(200).json({
           success: true,
           data,
-          message: "World check completed.",
+          message: "世界观检查完成。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);

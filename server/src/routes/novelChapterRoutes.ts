@@ -31,7 +31,7 @@ export function registerNovelChapterRoutes(input: RegisterNovelChapterRoutesInpu
       res.status(200).json({
         success: true,
         data,
-        message: "Chapters loaded.",
+        message: "章节列表已加载。",
       } satisfies ApiResponse<typeof data>);
     } catch (error) {
       next(error);
@@ -48,7 +48,7 @@ export function registerNovelChapterRoutes(input: RegisterNovelChapterRoutesInpu
         res.status(201).json({
           success: true,
           data,
-          message: "Chapter created.",
+          message: "章节已创建。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);
@@ -70,7 +70,7 @@ export function registerNovelChapterRoutes(input: RegisterNovelChapterRoutesInpu
         res.status(200).json({
           success: true,
           data,
-          message: "Chapter updated.",
+          message: "章节已更新。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);
@@ -84,7 +84,7 @@ export function registerNovelChapterRoutes(input: RegisterNovelChapterRoutesInpu
       await novelService.deleteChapter(id, chapterId);
       res.status(200).json({
         success: true,
-        message: "Chapter deleted.",
+        message: "章节已删除。",
       } satisfies ApiResponse<null>);
     } catch (error) {
       next(error);
@@ -101,7 +101,7 @@ export function registerNovelChapterRoutes(input: RegisterNovelChapterRoutesInpu
         res.status(200).json({
           success: true,
           data,
-          message: "Chapter traces loaded.",
+          message: "章节追踪已加载。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);

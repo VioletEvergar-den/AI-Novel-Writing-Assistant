@@ -161,7 +161,7 @@ export function registerNovelBaseRoutes(input: RegisterNovelBaseRoutesInput): vo
       res.status(200).json({
         success: true,
         data,
-        message: "Novel knowledge documents loaded.",
+        message: "小说知识文档已加载。",
       } satisfies ApiResponse<typeof data>);
     } catch (error) {
       next(error);
@@ -179,7 +179,7 @@ export function registerNovelBaseRoutes(input: RegisterNovelBaseRoutesInput): vo
         res.status(200).json({
           success: true,
           data,
-          message: "Novel knowledge documents updated.",
+          message: "小说知识文档已更新。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);

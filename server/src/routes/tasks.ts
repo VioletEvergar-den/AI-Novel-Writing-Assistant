@@ -39,7 +39,7 @@ router.get("/", validate({ query: listQuerySchema }), async (req, res, next) => 
     res.status(200).json({
       success: true,
       data,
-      message: "Tasks loaded.",
+      message: "任务列表已加载。",
     } satisfies ApiResponse<typeof data>);
   } catch (error) {
     next(error);
@@ -53,14 +53,14 @@ router.get("/:kind/:id", validate({ params: taskParamsSchema }), async (req, res
     if (!data) {
       res.status(404).json({
         success: false,
-        error: "Task not found.",
+        error: "任务不存在。",
       } satisfies ApiResponse<null>);
       return;
     }
     res.status(200).json({
       success: true,
       data,
-      message: "Task loaded.",
+      message: "任务已加载。",
     } satisfies ApiResponse<typeof data>);
   } catch (error) {
     next(error);
@@ -74,7 +74,7 @@ router.post("/:kind/:id/retry", validate({ params: taskParamsSchema }), async (r
     res.status(200).json({
       success: true,
       data,
-      message: "Task retried.",
+      message: "任务已重试。",
     } satisfies ApiResponse<typeof data>);
   } catch (error) {
     next(error);
@@ -88,7 +88,7 @@ router.post("/:kind/:id/cancel", validate({ params: taskParamsSchema }), async (
     res.status(200).json({
       success: true,
       data,
-      message: "Task cancelled.",
+      message: "任务已取消。",
     } satisfies ApiResponse<typeof data>);
   } catch (error) {
     next(error);
@@ -102,7 +102,7 @@ router.post("/:kind/:id/archive", validate({ params: taskParamsSchema }), async 
     res.status(200).json({
       success: true,
       data,
-      message: "Task archived.",
+      message: "任务已归档。",
     } satisfies ApiResponse<typeof data>);
   } catch (error) {
     next(error);

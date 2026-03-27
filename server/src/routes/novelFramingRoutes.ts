@@ -37,7 +37,7 @@ export function registerNovelFramingRoutes(input: RegisterNovelFramingRoutesInpu
         res.status(200).json({
           success: true,
           data,
-          message: "Book framing suggestion generated.",
+          message: "书籍框架建议已生成。",
         } satisfies ApiResponse<typeof data>);
       } catch (error) {
         next(error);

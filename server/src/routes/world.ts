@@ -21,7 +21,7 @@ const requireWorldWizard: RequestHandler = (_req, res, next) => {
   }
   res.status(404).json({
     success: false,
-    error: "World wizard feature is disabled.",
+    error: "世界观向导功能已禁用。",
   } satisfies ApiResponse<null>);
 };
 
@@ -32,7 +32,7 @@ const requireWorldVisualization: RequestHandler = (_req, res, next) => {
   }
   res.status(404).json({
     success: false,
-    error: "World visualization feature is disabled.",
+    error: "世界观可视化功能已禁用。",
   } satisfies ApiResponse<null>);
 };
 
@@ -273,7 +273,7 @@ router.get("/templates", requireWorldWizard, async (_req, res, next) => {
     res.status(200).json({
       success: true,
       data,
-      message: "Templates loaded.",
+      message: "模板已加载。",
     } satisfies ApiResponse<typeof data>);
   } catch (error) {
     next(error);
@@ -286,7 +286,7 @@ router.post("/inspiration/analyze", requireWorldWizard, validate({ body: inspira
     res.status(200).json({
       success: true,
       data,
-      message: "Inspiration analyzed.",
+      message: "灵感分析完成。",
     } satisfies ApiResponse<typeof data>);
   } catch (error) {
     next(error);
@@ -300,7 +300,7 @@ router.get("/library", requireWorldWizard, validate({ query: libraryListQuerySch
     res.status(200).json({
       success: true,
       data,
-      message: "Library loaded.",
+      message: "素材库已加载。",
     } satisfies ApiResponse<typeof data>);
   } catch (error) {
     next(error);
@@ -313,7 +313,7 @@ router.post("/library", requireWorldWizard, validate({ body: libraryCreateSchema
     res.status(201).json({
       success: true,
       data,
-      message: "Library item created.",
+      message: "素材项已创建。",
     } satisfies ApiResponse<typeof data>);
   } catch (error) {
     next(error);
@@ -331,7 +331,7 @@ router.post(
       res.status(200).json({
         success: true,
         data,
-        message: "Library item used.",
+        message: "素材项已使用。",
       } satisfies ApiResponse<typeof data>);
     } catch (error) {
       next(error);
@@ -345,7 +345,7 @@ router.post("/import", requireWorldWizard, validate({ body: worldImportSchema })
     res.status(201).json({
       success: true,
       data,
-      message: "World imported.",
+      message: "世界观已导入。",
     } satisfies ApiResponse<typeof data>);
   } catch (error) {
     next(error);
@@ -358,7 +358,7 @@ router.get("/", async (_req, res, next) => {
     res.status(200).json({
       success: true,
       data,
-      message: "World list loaded.",
+      message: "世界观列表已加载。",
     } satisfies ApiResponse<typeof data>);
   } catch (error) {
     next(error);
@@ -371,7 +371,7 @@ router.post("/", validate({ body: createWorldSchema }), async (req, res, next) =
     res.status(201).json({
       success: true,
       data,
-      message: "World created.",
+      message: "世界观已创建。",
     } satisfies ApiResponse<typeof data>);
   } catch (error) {
     next(error);
@@ -396,14 +396,14 @@ router.get("/:id", validate({ params: worldIdSchema }), async (req, res, next) =
     if (!data) {
       res.status(404).json({
         success: false,
-        error: "World not found.",
+        error: "世界观不存在。",
       } satisfies ApiResponse<null>);
       return;
     }
     res.status(200).json({
       success: true,
       data,
-      message: "World loaded.",
+      message: "世界观已加载。",
     } satisfies ApiResponse<typeof data>);
   } catch (error) {
     next(error);
@@ -478,7 +478,7 @@ router.get("/:id/structure", requireWorldWizard, validate({ params: worldIdSchem
     res.status(200).json({
       success: true,
       data,
-      message: "Structured world loaded.",
+      message: "结构化世界观已加载。",
     } satisfies ApiResponse<typeof data>);
   } catch (error) {
     next(error);
@@ -496,7 +496,7 @@ router.put(
       res.status(200).json({
         success: true,
         data,
-        message: "Structured world saved.",
+        message: "结构化世界观已保存。",
       } satisfies ApiResponse<typeof data>);
     } catch (error) {
       next(error);
@@ -515,7 +515,7 @@ router.post(
       res.status(200).json({
         success: true,
         data,
-        message: "Structured world backfilled.",
+        message: "结构化世界观已回填。",
       } satisfies ApiResponse<typeof data>);
     } catch (error) {
       next(error);
@@ -536,7 +536,7 @@ router.post(
       res.status(200).json({
         success: true,
         data,
-        message: "Structure section generated.",
+        message: "结构章节已生成。",
       } satisfies ApiResponse<typeof data>);
     } catch (error) {
       next(error);
@@ -551,7 +551,7 @@ router.get("/:id/knowledge-documents", validate({ params: worldIdSchema }), asyn
     res.status(200).json({
       success: true,
       data,
-      message: "World knowledge documents loaded.",
+      message: "世界观知识文档已加载。",
     } satisfies ApiResponse<typeof data>);
   } catch (error) {
     next(error);
@@ -569,7 +569,7 @@ router.put(
       res.status(200).json({
         success: true,
         data,
-        message: "World knowledge documents updated.",
+        message: "世界观知识文档已更新。",
       } satisfies ApiResponse<typeof data>);
     } catch (error) {
       next(error);
@@ -584,7 +584,7 @@ router.put("/:id", validate({ params: worldIdSchema, body: updateWorldSchema }),
     res.status(200).json({
       success: true,
       data,
-      message: "World updated.",
+      message: "世界观已更新。",
     } satisfies ApiResponse<typeof data>);
   } catch (error) {
     next(error);
@@ -597,7 +597,7 @@ router.delete("/:id", validate({ params: worldIdSchema }), async (req, res, next
     await worldService.deleteWorld(id);
     res.status(200).json({
       success: true,
-      message: "World deleted.",
+      message: "世界观已删除。",
     } satisfies ApiResponse<null>);
   } catch (error) {
     next(error);
@@ -611,7 +611,7 @@ router.post("/:id/axioms/suggest", requireWorldWizard, validate({ params: worldI
     res.status(200).json({
       success: true,
       data,
-      message: "Axioms suggested.",
+      message: "公理建议已生成。",
     } satisfies ApiResponse<typeof data>);
   } catch (error) {
     next(error);
@@ -626,7 +626,7 @@ router.put("/:id/axioms", requireWorldWizard, validate({ params: worldIdSchema, 
     res.status(200).json({
       success: true,
       data,
-      message: "Axioms updated.",
+      message: "公理已更新。",
     } satisfies ApiResponse<typeof data>);
   } catch (error) {
     next(error);
@@ -644,7 +644,7 @@ router.post(
       res.status(200).json({
         success: true,
         data,
-        message: "All layers generated.",
+        message: "所有层级已生成。",
       } satisfies ApiResponse<typeof data>);
     } catch (error) {
       next(error);
@@ -667,7 +667,7 @@ router.post(
       res.status(200).json({
         success: true,
         data,
-        message: "Layer generated.",
+        message: "层级已生成。",
       } satisfies ApiResponse<typeof data>);
     } catch (error) {
       next(error);
@@ -686,7 +686,7 @@ router.put("/:id/layers/:layerKey", requireWorldWizard, validate({ params: layer
     res.status(200).json({
       success: true,
       data,
-      message: "Layer updated.",
+      message: "层级已更新。",
     } satisfies ApiResponse<typeof data>);
   } catch (error) {
     next(error);
@@ -700,7 +700,7 @@ router.post("/:id/layers/:layerKey/confirm", requireWorldWizard, validate({ para
     res.status(200).json({
       success: true,
       data,
-      message: "Layer confirmed.",
+      message: "层级已确认。",
     } satisfies ApiResponse<typeof data>);
   } catch (error) {
     next(error);
@@ -714,7 +714,7 @@ router.post("/:id/deepening/questions", requireWorldWizard, validate({ params: w
     res.status(200).json({
       success: true,
       data,
-      message: "Deepening questions generated.",
+      message: "深化问题已生成。",
     } satisfies ApiResponse<typeof data>);
   } catch (error) {
     next(error);
@@ -729,7 +729,7 @@ router.post("/:id/deepening/answers", requireWorldWizard, validate({ params: wor
     res.status(200).json({
       success: true,
       data,
-      message: "Answers integrated.",
+      message: "答案已整合。",
     } satisfies ApiResponse<typeof data>);
   } catch (error) {
     next(error);
@@ -743,7 +743,7 @@ router.post("/:id/consistency/check", requireWorldWizard, validate({ params: wor
     res.status(200).json({
       success: true,
       data,
-      message: "Consistency checked.",
+      message: "一致性检查完成。",
     } satisfies ApiResponse<typeof data>);
   } catch (error) {
     next(error);
@@ -762,7 +762,7 @@ router.patch(
       res.status(200).json({
         success: true,
         data,
-        message: "Issue status updated.",
+        message: "问题状态已更新。",
       } satisfies ApiResponse<typeof data>);
     } catch (error) {
       next(error);
@@ -777,7 +777,7 @@ router.get("/:id/overview", requireWorldWizard, validate({ params: worldIdSchema
     res.status(200).json({
       success: true,
       data,
-      message: "Overview loaded.",
+      message: "概览已加载。",
     } satisfies ApiResponse<typeof data>);
   } catch (error) {
     next(error);
@@ -791,7 +791,7 @@ router.get("/:id/visualization", requireWorldWizard, requireWorldVisualization, 
     res.status(200).json({
       success: true,
       data,
-      message: "Visualization loaded.",
+      message: "可视化数据已加载。",
     } satisfies ApiResponse<typeof data>);
   } catch (error) {
     next(error);
@@ -815,7 +815,7 @@ router.get("/:id/snapshots", requireWorldWizard, validate({ params: worldIdSchem
     res.status(200).json({
       success: true,
       data,
-      message: "Snapshots loaded.",
+      message: "快照列表已加载。",
     } satisfies ApiResponse<typeof data>);
   } catch (error) {
     next(error);
@@ -830,7 +830,7 @@ router.post("/:id/snapshots", requireWorldWizard, validate({ params: worldIdSche
     res.status(201).json({
       success: true,
       data,
-      message: "Snapshot created.",
+      message: "快照已创建。",
     } satisfies ApiResponse<typeof data>);
   } catch (error) {
     next(error);
@@ -844,7 +844,7 @@ router.post("/:id/snapshots/:snapshotId/restore", requireWorldWizard, validate({
     res.status(200).json({
       success: true,
       data,
-      message: "Snapshot restored.",
+      message: "快照已恢复。",
     } satisfies ApiResponse<typeof data>);
   } catch (error) {
     next(error);
@@ -859,7 +859,7 @@ router.get("/:id/snapshots/diff", requireWorldWizard, validate({ params: worldId
     res.status(200).json({
       success: true,
       data,
-      message: "Snapshot diff generated.",
+      message: "快照差异已生成。",
     } satisfies ApiResponse<typeof data>);
   } catch (error) {
     next(error);
@@ -874,7 +874,7 @@ router.get("/:id/export", requireWorldWizard, validate({ params: worldIdSchema, 
     res.status(200).json({
       success: true,
       data,
-      message: "Export payload prepared.",
+      message: "导出数据已准备。",
     } satisfies ApiResponse<typeof data>);
   } catch (error) {
     next(error);

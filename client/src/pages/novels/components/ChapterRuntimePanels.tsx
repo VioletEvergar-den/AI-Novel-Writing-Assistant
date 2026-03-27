@@ -106,11 +106,11 @@ function buildReplanSummary(
 function buildTriggerLabel(triggerType: string): string {
   switch (triggerType) {
     case "manual":
-      return "Manual";
+      return "手动";
     case "auto_milestone":
-      return "Auto milestone";
+      return "自动里程碑";
     case "before_pipeline":
-      return "Before pipeline";
+      return "流水线前";
     default:
       return triggerType.replace(/_/g, " ");
   }
@@ -133,7 +133,7 @@ export function ChapterRuntimeContextCard(props: {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-base">Plan / State</CardTitle>
+        <CardTitle className="text-base">规划 / 状态</CardTitle>
       </CardHeader>
       <CardContent className="space-y-3 text-sm">
         <div className="space-y-1">
@@ -252,13 +252,13 @@ export function ChapterRuntimeAuditCard(props: {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-base">Audit</CardTitle>
+        <CardTitle className="text-base">审计</CardTitle>
       </CardHeader>
       <CardContent className="space-y-3 text-sm">
         <div className="flex items-center gap-2">
           <div className="font-medium">总分 {audit.score.overall}</div>
           <Badge variant={audit.hasBlockingIssues ? "default" : "outline"}>
-            {audit.hasBlockingIssues ? "Blocking" : "Clear"}
+            {audit.hasBlockingIssues ? "有阻塞" : "已通过"}
           </Badge>
         </div>
         <div className="text-xs text-muted-foreground">
@@ -268,7 +268,7 @@ export function ChapterRuntimeAuditCard(props: {
           <div className="rounded-md border p-2 text-xs">
             <div className="flex items-center justify-between gap-2">
               <div className="font-medium">
-                Replan: {replanSummary.recommended ? "Recommended" : "Not needed"}
+                重规划：{replanSummary.recommended ? "建议执行" : "无需执行"}
               </div>
               {typeof props.onReplan === "function" ? (
                 <Button
@@ -277,30 +277,30 @@ export function ChapterRuntimeAuditCard(props: {
                   onClick={props.onReplan}
                   disabled={props.isReplanning}
                 >
-                  {props.isReplanning ? "Replanning..." : replanSummary.recommended ? "Run Replan" : "Replan"}
+                  {props.isReplanning ? "重规划中..." : replanSummary.recommended ? "执行重规划" : "重规划"}
                 </Button>
               ) : null}
             </div>
             <div className="text-muted-foreground">{replanSummary.reason}</div>
             {replanSummary.blockingIssueIds.length > 0 ? (
               <div className="mt-1 text-muted-foreground">
-                Blocking issues: {replanSummary.blockingIssueIds.length}
+                阻塞问题：{replanSummary.blockingIssueIds.length}
               </div>
             ) : null}
           </div>
         ) : null}
         {props.lastReplanResult ? (
           <div className="rounded-md border bg-muted/20 p-2 text-xs">
-            <div className="font-medium">Last Replan</div>
+            <div className="font-medium">最近重规划</div>
             <div className="mt-1 text-muted-foreground">
-              Chapters: {props.lastReplanResult.affectedChapterOrders.join(", ") || "n/a"}
+              影响章节：{props.lastReplanResult.affectedChapterOrders.join("、") || "无"}
             </div>
             <div className="text-muted-foreground">
-              Window: {props.lastReplanResult.windowSize} | Trigger: {buildTriggerLabel(props.lastReplanResult.triggerType)}
+              窗口：{props.lastReplanResult.windowSize} | 触发：{buildTriggerLabel(props.lastReplanResult.triggerType)}
             </div>
             {props.lastReplanResult.sourceIssueIds.length > 0 ? (
               <div className="text-muted-foreground">
-                Source issues: {props.lastReplanResult.sourceIssueIds.length}
+                来源问题：{props.lastReplanResult.sourceIssueIds.length}
               </div>
             ) : null}
           </div>
