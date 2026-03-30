@@ -1,14 +1,30 @@
 {
   "name": "@ai-novel/server",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
+  "main": "dist/app.js",
+  "bin": "dist/app.js",
+  "pkg": {
+    "scripts": "dist/**/*.js",
+    "assets": [
+      "dist/prisma/schema.prisma",
+      "dist/prisma/*.node"
+    ],
+    "targets": [
+      "node20-win-x64"
+    ],
+    "outputPath": "release"
+  },
   "prisma": {
     "seed": "ts-node-dev --transpile-only src/db/seed.ts"
   },
   "scripts": {
     "dev": "pnpm prisma:generate && pnpm prisma:push && ts-node-dev --respawn --transpile-only src/app.ts",
-    "build": "tsc -p tsconfig.json",
+    "build": "tsc -p tsconfig.json && pnpm copy-assets",
+    "copy-assets": "node scripts/copy-assets.cjs",
     "start": "node dist/app.js",
+    "package": "pkg . --compress GZip",
+    "package:win": "pkg . --targets node20-win-x64 --compress GZip",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "lint": "tsc -p tsconfig.json --noEmit",
     "test": "pnpm --filter @ai-novel/shared build && pnpm run build && node --test tests/**/*.test.js",
@@ -41,6 +57,7 @@
     "helmet": "^8.1.0",
     "langchain": "^1.2.28",
     "morgan": "^1.10.1",
+    "webdav": "^5.8.0",
     "zod": "^4.3.6"
   },
   "devDependencies": {
@@ -48,6 +65,7 @@
     "@types/express": "^5.0.6",
     "@types/morgan": "^1.9.10",
     "@types/node": "^25.3.3",
+    "@yao-pkg/pkg": "^5.16.1",
     "prisma": "^7.4.2",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.9.3"

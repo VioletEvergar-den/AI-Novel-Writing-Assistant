@@ -100,6 +100,8 @@ export const queryKeys = {
     ragEmbeddingModels: (provider: string) => ["settings", "rag", "embedding-models", provider] as const,
     modelRoutes: ["settings", "model-routes"] as const,
     modelRouteConnectivity: ["settings", "model-route-connectivity"] as const,
+    webdavConfig: ["settings", "webdav-config"] as const,
+    webdavStatus: ["settings", "webdav-status"] as const,
   },
   novelsKnowledge: {
     bindings: (id: string) => ["novels", "knowledge-documents", id] as const,

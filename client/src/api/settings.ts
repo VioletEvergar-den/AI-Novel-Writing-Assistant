@@ -184,3 +184,70 @@ export async function testLLMConnection(payload: { provider: LLMProvider; apiKey
   >("/llm/test", payload);
   return data;
 }
+
+export interface WebDAVConfig {
+  serverUrl: string;
+  username: string;
+  password: string;
+  remotePath: string;
+  autoSyncEnabled: boolean;
+  syncIntervalMinutes: number;
+  syncOnStartup: boolean;
+  isConfigured: boolean;
+}
+
+export interface WebDAVSyncStatus {
+  isConfigured: boolean;
+  autoSyncEnabled: boolean;
+  syncIntervalMinutes: number;
+  syncOnStartup: boolean;
+  lastSyncAt: string | null;
+  lastSyncStatus: "success" | "failed" | null;
+  lastSyncError: string | null;
+  localDatabaseMtime: number | null;
+  remoteDatabaseMtime: number | null;
+}
+
+export interface SyncResult {
+  success: boolean;
+  message: string;
+  direction?: "upload" | "download" | "none";
+  localMtime?: number;
+  remoteMtime?: number;
+  syncedAt: string;
+}
+
+export async function getWebDAVConfig() {
+  const { data } = await apiClient.get<ApiResponse<WebDAVConfig>>("/webdav/config");
+  return data;
+}
+
+export async function saveWebDAVConfig(payload: Omit<WebDAVConfig, "isConfigured">) {
+  const { data } = await apiClient.post<ApiResponse<WebDAVConfig>>("/webdav/config", payload);
+  return data;
+}
+
+export async function deleteWebDAVConfig() {
+  const { data } = await apiClient.delete<ApiResponse<null>>("/webdav/config");
+  return data;
+}
+
+export async function testWebDAVConnection(payload: {
+  serverUrl: string;
+  username: string;
+  password: string;
+  remotePath: string;
+}) {
+  const { data } = await apiClient.post<ApiResponse<null>>("/webdav/test", payload);
+  return data;
+}
+
+export async function syncWebDAV(direction?: "upload" | "download" | "auto") {
+  const { data } = await apiClient.post<ApiResponse<SyncResult>>("/webdav/sync", { direction });
+  return data;
+}
+
+export async function getWebDAVSyncStatus() {
+  const { data } = await apiClient.get<ApiResponse<WebDAVSyncStatus>>("/webdav/status");
+  return data;
+}

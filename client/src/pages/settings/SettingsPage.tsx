@@ -17,6 +17,7 @@ import {
   saveAPIKeySetting,
   testLLMConnection,
 } from "@/api/settings";
+import WebDAVSettingsCard from "./components/WebDAVSettingsCard";
 
 const MODEL_BADGE_COLLAPSE_COUNT = 8;
 
@@ -135,6 +136,8 @@ export default function SettingsPage() {
           </Button>
         </CardContent>
       </Card>
+
+      <WebDAVSettingsCard />
 
       <Card>
         <CardHeader>

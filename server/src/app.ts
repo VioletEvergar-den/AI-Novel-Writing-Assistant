@@ -1,5 +1,6 @@
 import "dotenv/config";
 import os from "node:os";
+import path from "node:path";
 import cors from "cors";
 import express from "express";
 import helmet from "helmet";
@@ -31,12 +32,14 @@ import styleEngineExtractionRouter from "./routes/styleEngineExtraction";
 import storyModeRouter from "./routes/storyMode";
 import tasksRouter from "./routes/tasks";
 import titleLibraryRouter from "./routes/titleLibrary";
+import webdavRouter from "./routes/webdav";
 import worldRouter from "./routes/world";
 import writingFormulaRouter from "./routes/writingFormula";
 import { novelEventBus, registerNovelEventHandlers } from "./events";
 import { bookAnalysisService } from "./services/bookAnalysis/BookAnalysisService";
 import { imageGenerationService } from "./services/image/ImageGenerationService";
 import { ragServices } from "./services/rag";
+import { webDAVSyncService } from "./services/sync/WebDAVSyncService";
 
 registerNovelEventHandlers(novelEventBus);
 morgan.token("error-message", (_req, res) => {
@@ -54,7 +57,7 @@ function parseEnvFlag(value: string | undefined, defaultValue: boolean): boolean
   return value === "true" || value === "1";
 }
 
-export function createApp() {
+export async function createApp() {
   const app = express();
   const jsonBodyLimit = process.env.API_JSON_LIMIT ?? "20mb";
   const corsOriginEnv = process.env.CORS_ORIGIN;
@@ -119,7 +122,17 @@ export function createApp() {
   app.use("/api/images", imagesRouter);
   app.use("/api/tasks", tasksRouter);
   app.use("/api/settings", settingsRouter);
+  app.use("/api/webdav", webdavRouter);
   app.use("/api/astrology", astrologyRouter);
+
+  const clientDistPath = path.join(__dirname, "..", "client");
+  const fs = await import("node:fs");
+  if (fs.existsSync(clientDistPath)) {
+    app.use(express.static(clientDistPath));
+    app.get("*", (_req, res) => {
+      res.sendFile(path.join(clientDistPath, "index.html"));
+    });
+  }
 
   app.use((_req, res) => {
     const response: ApiResponse<null> = {
@@ -154,7 +167,7 @@ async function bootstrap(): Promise<void> {
     console.warn("数据库中的模型密钥加载失败，已回退到环境变量。", error);
   }
 
-  const app = createApp();
+  const app = await createApp();
   const port = Number(process.env.PORT ?? 3000);
   const allowLan = parseEnvFlag(process.env.ALLOW_LAN, process.env.NODE_ENV !== "production");
   const host = process.env.HOST ?? (allowLan ? "0.0.0.0" : "localhost");
@@ -166,6 +179,11 @@ async function bootstrap(): Promise<void> {
   void imageGenerationService.resumePendingTasks().catch((error) => {
     console.warn("Failed to resume pending image generation tasks.", error);
   });
+
+  void webDAVSyncService.syncOnStartup().catch((error) => {
+    console.warn("Failed to sync on startup.", error);
+  });
+  webDAVSyncService.startAutoSync();
 
   app.listen(port, host, () => {
     console.log(`[server] listening on http://localhost:${port}`);
